@@ -1,0 +1,214 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nati car</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap-icons.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+      /* Reset some default styles and provide a basic styling */
+body, h1, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa; /* Bootstrap light background color */
+    color: #333;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+}
+
+/* Header styling */
+header {
+    background-color: #ffffff; /* White background */
+}
+
+.navbar {
+    border-bottom: 1px solid #dee2e6; /* Bootstrap default border color */
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+/* Contact section styling */
+.contact {
+    padding: 80px 0;
+    background-color: #ffffff; /* White background */
+}
+
+.heading {
+    color: #343a40; /* Bootstrap dark text color */
+    font-size: 2.5em;
+    margin-bottom: 30px;
+}
+
+.contact-form {
+    background-color: #f8f9fa; /* Light gray background color */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+input,
+textarea {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ced4da; 
+    border-radius: 5px;
+}
+
+button {
+    background-color: #007bff; 
+    color: #ffffff; 
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3; 
+}
+
+
+#footer {
+    background-color: #343a40; 
+    color: #ffffff; 
+    padding: 30px 0;
+}
+
+.footer h3 {
+    color: #ffc107; 
+}
+
+.footer ul {
+    list-style: none;
+}
+
+.footer ul li {
+    margin-bottom: 10px;
+}
+
+.footer a {
+    color: #ffffff; 
+    text-decoration: none;
+}
+
+.credit {
+
+    margin-top: 20px;
+    font-size: 0.9em;
+}
+</style>
+</head>
+<body>
+
+  <header>
+      <div class="m-4">
+          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+              <div class="container-fluid">
+                <a class="btn btn-primary" href="{% url 'home' %}">NATI CAR dealer</a>
+                  <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                      <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarCollapse">
+                      <div class="navbar-nav">
+                        <a href="{% url 'home' %}" class="nav-item nav-link">Home</a>
+                        <a href="{% url 'about' %}" class="nav-item nav-link">About Us</a>
+                        <a href="{% url 'car' %}" class="nav-item nav-link">Vehicles</a>
+                        <a href="{% url 'contact' %}" class="nav-item nav-link active">Contact</a>
+                      </div>
+                      <div class="navbar-nav ms-auto">
+                          <a href="{% url 'sign' %}" class="nav-item nav-link">Login</a>
+                      </div>
+                  </div>
+              </div>
+          </nav>
+      </div>
+  </header>
+
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.3206125075!2d38.75909097934571!3d9.034489699999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b8f61dd87e2bf%3A0x1ba2590b6d518232!2s2QM6%2BQMW%2C%20Addis%20Ababa!5e0!3m2!1sen!2set" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="col-md-4">
+          <h1 class="heading"><span>Contact</span> us</h1>
+          <div class="contact-form">
+            <form method="POST">
+              {% csrf_token %}
+              <label for="name">Full Name:</label>
+              <input name='name' type="text" id="name" required>
+
+              <label for="email">Email Account:</label>
+              <input name='email' type="email" id="email" required>
+
+              <label for="comment">Comment Here:</label>
+              <textarea name='comment' id="comment" rows="3" required></textarea>
+
+              <button type="submit">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="footer">
+    <section class="footer" id="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="{% url 'home' %}">Home</a></li>
+              <li><a href="{% url 'car' %}">Vehicles</a></li>
+              <li><a href="{% url 'contact' %}">Contact</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-4">
+            <h3>Contact Info</h3>
+            <ul>
+              <li><a href="tel:+251929231706"><i class="phone"></i> +251 929 231 706</a></li>
+              <li><a href="tel:+251715273535"><i class="phone"></i> +251 715 273 535</a></li>
+              <li><a href="tel:+251988168953"><i class="phone"></i> +251 988 168 953</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-4">
+            <h3>Social Media</h3>
+            <ul>
+              <li><a href="https://t.me/nattiep">Telegram</a></li>
+              <li><a href="mailto:natiephrem501@gmail.com">Email</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="credit">© 2023 Nati Cars | All Rights Reserved</div>
+      </div>
+    </section>
+  </footer>
+
+</body>
+</html>
